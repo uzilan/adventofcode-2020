@@ -1,11 +1,14 @@
 package adventofcode
 
+import adventofcode.Utils.printResult
 import java.io.File
+import kotlin.time.ExperimentalTime
 
 object Day1 {
+
     fun sum2To2020(input: List<Long>): Long {
-        input.forEach { first ->
-            input.drop(1).forEach { second ->
+        input.forEachIndexed { i, first ->
+            input.drop(i + 1).forEach { second ->
                 if (first + second == 2020L) return first * second
             }
         }
@@ -13,9 +16,9 @@ object Day1 {
     }
 
     fun sum3To2020(input: List<Long>): Long {
-        input.forEach { first ->
-            input.drop(1).forEach { second ->
-                input.drop(2).forEach { third ->
+        input.forEachIndexed { i, first ->
+            input.drop(i + 1).forEachIndexed { j, second ->
+                input.drop(j + 1).forEach { third ->
                     if (first + second + third == 2020L) return first * second * third
                 }
             }
@@ -23,13 +26,14 @@ object Day1 {
         return 0
     }
 
+    @ExperimentalTime
     @JvmStatic
     fun main(args: Array<String>) {
-        val lines = File("src/main/resources/day1.txt").readLines()
-        val input = lines.map { it.toLong() }
-        val part1 = sum2To2020(input)
-        println("part 1: $part1")
-        val part2 = sum3To2020(input)
-        println("part 2: $part2")
+        val input = File("src/main/resources/day1.txt")
+            .readLines()
+            .map { it.toLong() }
+
+        printResult("part 1") { sum2To2020(input) }
+        printResult("part 2") { sum3To2020(input) }
     }
 }

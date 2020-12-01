@@ -1,13 +1,23 @@
 package adventofcode
 
+import kotlin.time.ExperimentalTime
+import kotlin.time.measureTimedValue
+
 object Utils {
 
-    fun String.toIntList(): List<Long> {
+    fun String.toLongList(): List<Long> {
         return this.split("\n")
-                .drop(1)
-                .dropLast(1)
-                .map {
-                    it.trim().toLong()
-                }
+            .filter { it.isNotBlank() }
+            .map {
+                it.trim().toLong()
+            }
+    }
+
+    @ExperimentalTime
+    fun <T> printResult(message: String, block: () -> T) {
+        val (result, duration) = measureTimedValue {
+            block()
+        }
+        println("$message: $result ($duration)")
     }
 }

@@ -1,8 +1,8 @@
 package adventofcode
 
-import adventofcode.Utils.toIntList
+import adventofcode.Utils.toLongList
 import io.kotest.core.spec.style.StringSpec
-import io.kotest.matchers.longs.shouldBeExactly
+import io.kotest.matchers.shouldBe
 
 class Day1Test : StringSpec({
     val input = """
@@ -12,13 +12,13 @@ class Day1Test : StringSpec({
         299
         675
         1456
-        """.toIntList()
+        """.toLongList()
 
     "part 1" {
-        Day1.sum2To2020(input) shouldBeExactly 514579
+        Day1.sum2To2020(input) shouldBe 514579
     }
 
     "part 2" {
-        Day1.sum3To2020(input) shouldBeExactly 241861950
+        Day1.sum3To2020(input) shouldBe 241861950
     }
 })
