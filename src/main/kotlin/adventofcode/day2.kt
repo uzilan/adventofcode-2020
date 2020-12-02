@@ -1,5 +1,6 @@
 package adventofcode
 
+import adventofcode.Day2.LegalStrategy
 import adventofcode.Utils.printResult
 import java.io.File
 import kotlin.time.ExperimentalTime
@@ -22,23 +23,19 @@ object Day2 {
         )
     }
 
-    interface LegalStrategy {
+    fun interface LegalStrategy {
         fun isLegal(row: Row): Boolean
     }
 
-    class SledRentalPlaceDownTheStreet : LegalStrategy {
-        override fun isLegal(row: Row): Boolean {
-            val count = row.password.count { it == row.letter }
-            return count >= row.firstNumber && count <= row.secondNumber
-        }
+    val sledRentalPlaceDownTheStreet = LegalStrategy { row ->
+        val count = row.password.count { it == row.letter }
+        count >= row.firstNumber && count <= row.secondNumber
     }
 
-    class OfficialTobogganCorporateAuthenticationSystem : LegalStrategy {
-        override fun isLegal(row: Row): Boolean {
-            val inFirstPosition = row.password[row.firstNumber - 1] == row.letter
-            val inSecondPosition = row.password[row.secondNumber - 1] == row.letter
-            return inFirstPosition xor inSecondPosition
-        }
+    val officialTobogganCorporateAuthenticationSystem = LegalStrategy { row ->
+        val inFirstPosition = row.password[row.firstNumber - 1] == row.letter
+        val inSecondPosition = row.password[row.secondNumber - 1] == row.letter
+        inFirstPosition xor inSecondPosition
     }
 
     @ExperimentalTime
@@ -47,8 +44,8 @@ object Day2 {
         val input = File("src/main/resources/day2.txt")
             .readLines()
 
-        printResult("part 1") { countLegalPasswords(input, SledRentalPlaceDownTheStreet()) }
-        printResult("part 2") { countLegalPasswords(input, OfficialTobogganCorporateAuthenticationSystem()) }
+        printResult("part 1") { countLegalPasswords(input, sledRentalPlaceDownTheStreet) }
+        printResult("part 2") { countLegalPasswords(input, officialTobogganCorporateAuthenticationSystem) }
     }
 }
 

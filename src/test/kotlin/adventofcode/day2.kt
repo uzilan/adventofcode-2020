@@ -12,10 +12,10 @@ class Day2Test : StringSpec({
         """.toStringList()
 
     "part 1" {
-        Day2.countLegalPasswords(input, Day2.SledRentalPlaceDownTheStreet()) shouldBe 2
+        Day2.countLegalPasswords(input, Day2.sledRentalPlaceDownTheStreet) shouldBe 2
     }
 
     "part 2" {
-        Day2.countLegalPasswords(input, Day2.OfficialTobogganCorporateAuthenticationSystem()) shouldBe 1
+        Day2.countLegalPasswords(input, Day2.officialTobogganCorporateAuthenticationSystem) shouldBe 1
     }
 })
