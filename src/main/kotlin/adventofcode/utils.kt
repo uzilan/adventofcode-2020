@@ -5,12 +5,15 @@ import kotlin.time.measureTimedValue
 
 object Utils {
 
-    fun String.toLongList(): List<Long> {
+    fun String.toStringList(): List<String> {
         return this.split("\n")
             .filter { it.isNotBlank() }
-            .map {
-                it.trim().toLong()
-            }
+            .map { it.trim() }
+    }
+
+    fun String.toLongList(): List<Long> {
+        return toStringList()
+            .map { it.toLong() }
     }
 
     @ExperimentalTime
