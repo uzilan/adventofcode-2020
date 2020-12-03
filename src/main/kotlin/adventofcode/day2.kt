@@ -41,8 +41,7 @@ object Day2 {
     @ExperimentalTime
     @JvmStatic
     fun main(args: Array<String>) {
-        val input = File("src/main/resources/day2.txt")
-            .readLines()
+        val input = File("src/main/resources/day2.txt").readLines()
 
         printResult("part 1") { countLegalPasswords(input, sledRentalPlaceDownTheStreet) }
         printResult("part 2") { countLegalPasswords(input, officialTobogganCorporateAuthenticationSystem) }

@@ -29,8 +29,7 @@ object Day1 {
     @ExperimentalTime
     @JvmStatic
     fun main(args: Array<String>) {
-        val input = File("src/main/resources/day1.txt")
-            .readLines()
+        val input = File("src/main/resources/day1.txt").readLines()
             .map { it.toLong() }
 
         printResult("part 1") { sum2To2020(input) }
