@@ -1,5 +1,6 @@
 package adventofcode
 
+import adventofcode.Utils.printResult
 import java.io.File
 import kotlin.time.ExperimentalTime
 
@@ -60,7 +61,7 @@ object Day7 {
     fun main(args: Array<String>) {
         val input = File("src/main/resources/day7.txt").readLines()
 
-        Utils.printResult("part 1") { part1(input) }
-        Utils.printResult("part 2") { part2(input) }
+        printResult("part 1") { part1(input) }
+        printResult("part 2") { part2(input) }
     }
 }
