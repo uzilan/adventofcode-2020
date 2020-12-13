@@ -12,4 +12,8 @@ class Day12Test : StringSpec({
     "part 1"() {
         Day12.part1(input) shouldBe 25
     }
+
+//    "part 2"() {
+//        Day12.part2(input) shouldBe 286
+//    }
 })
