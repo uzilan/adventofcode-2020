@@ -11,4 +11,9 @@ class Day16Test : StringSpec({
     "part 1"() {
         Day16.part1(input) shouldBe 71
     }
+
+    "part 2"() {
+        Day16.part2(input) shouldBe 71
+    }
+
 })
